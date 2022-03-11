@@ -1,0 +1,93 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(ymq)
+> 
+> ym <- as.integer(sprintf("%04d%02d", rep(c(2010, 2011), each = 12), 1:12))
+> yq <- as.integer(sprintf("%04d%02d", rep(c(2010, 2011), each = 4), 1:4))
+> 
+> ym %+m% 1
+ [1] 201002 201003 201004 201005 201006 201007 201008 201009 201010 201011
+[11] 201012 201101 201102 201103 201104 201105 201106 201107 201108 201109
+[21] 201110 201111 201112 201201
+> ym %-m% "1"
+ [1] 200912 201001 201002 201003 201004 201005 201006 201007 201008 201009
+[11] 201010 201011 201012 201101 201102 201103 201104 201105 201106 201107
+[21] 201108 201109 201110 201111
+> all.equal((ym %+m% 1:12) %-m% 1:12, ym)
+[1] TRUE
+> all.equal(ym %+m% "-1", ym %-m% 1)
+[1] TRUE
+> all.equal(ym %+m% 0.9, ym)
+[1] TRUE
+> all.equal(201213 %+m% 0, 201301)
+[1] TRUE
+> 
+> yq %+q% 1
+[1] 201002 201003 201004 201101 201102 201103 201104 201201
+> yq %-q% "1"
+[1] 200904 201001 201002 201003 201004 201101 201102 201103
+> all.equal((yq %+m% 1:4) %-m% 1:4, yq)
+[1] TRUE
+> all.equal(yq %+m% "-1", yq %-m% 1)
+[1] TRUE
+> all.equal(yq %+m% 0.9, yq)
+[1] TRUE
+> all.equal(201205 %+q% 0, 201301)
+[1] TRUE
+> 
+> ym %m-m% 201101
+ [1] -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6
+[20]   7   8   9  10  11
+> all.equal(201101 %+m% (ym %m-m% 201101), ym)
+[1] TRUE
+> all.equal(ym %m-m% 201101, -(201101 %m-m% ym))
+[1] TRUE
+> 201315 %m-m% 201403
+[1] 0
+> 
+> yq %q-q% 201101
+[1] -4 -3 -2 -1  0  1  2  3
+> all.equal(201101 %+q% (yq %q-q% 201101), yq)
+[1] TRUE
+> all.equal(yq %q-q% 201101, -(201101 %q-q% yq))
+[1] TRUE
+> 201306 %q-q% 201402
+[1] 0
+> 
+> all.equal(201007 %m:m% 201206, ym %+m% 6)
+[1] TRUE
+> all.equal(201206 %m:m% 201007, rev(ym %+m% 6))
+[1] TRUE
+> 
+> all.equal(201002 %q:q% 201201, yq %+q% 1)
+[1] TRUE
+> all.equal(201201 %q:q% 201002, rev(yq %+q% 1))
+[1] TRUE
+> 
+> m2q(202003)
+[1] 202001
+> q2m(202002)
+[1] 202004
+> all.equal(q2m(m2q(c(202001, 202004, 202007, 202010))), c(202001, 202004, 202007, 202010))
+[1] TRUE
+> all.equal(q2m(m2q(c(202001, 202004, 202007, 202010) + 12)), c(202101, 202104, 202107, 202110))
+[1] TRUE
+> 
+> proc.time()
+   user  system elapsed 
+  0.325   0.192   0.371 
