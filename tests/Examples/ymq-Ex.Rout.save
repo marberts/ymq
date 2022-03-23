@@ -40,6 +40,14 @@ Type 'q()' to quit R.
 [1] 202101
 > q2m(202103)
 [1] 202107
+>
+> # Represent as the third month of the quarter
+> q2m(202103) %+m% 2L
+[1] 202109
+> 
+> # Represent as YYYYMMDD
+> q2m(202103) * 100L + 1L
+[1] 20210701
 > 
 > 
 > 

@@ -26,6 +26,10 @@ An integer vector of the form YYYYMM, or YYYYQQ.
 \examples{
 m2q(202103)
 q2m(202103)
+
+# Represent as the third month of the quarter
+q2m(202103) \%+m\% 2L
+
+# Represent as YYYYMMDD
+q2m(202103) * 100L + 1L
 }
-
-

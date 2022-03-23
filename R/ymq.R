@@ -34,7 +34,7 @@ colon <- function(n) {
     e1 <- as.integer(e1)
     e2 <- as.integer(e2)
     res <- (year(e1) * n + period(e1)):(year(e2) * n + period(e2))
-    yqm(0, res)
+    yqm(0L, res)
   }
 }
 
