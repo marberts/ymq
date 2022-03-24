@@ -6,7 +6,7 @@
 \title{Year Months and Quarters}
 
 \description{
-Operators to manipulate year months in the form YYYYMM, and year quarters in the form YYYYQQ.
+Operators to manipulate integers representing year months in the form YYYYMM, and year quarters in the form YYYYQQ.
 }
 
 \seealso{

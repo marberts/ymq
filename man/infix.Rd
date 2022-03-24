@@ -9,7 +9,7 @@
 \alias{\%q:q\%} 
 
 \title{
-Infix operators to work with year months (YYYYMM) and year quarters (YYYYQQ).
+Infix operators to work with integers representing year months (YYYYMM) and year quarters (YYYYQQ).
 }
 
 \description{
@@ -34,7 +34,7 @@ e1 \%q:q\% e2
 }
 
 \arguments{
-  \item{e1, e2}{Integer vector of year months of the form YYYYMM, or year quarters of the form YYYYQQ.}
+  \item{e1, e2}{An integer vector of year months of the form YYYYMM, or year quarters of the form YYYYQQ.}
 }
 
 \value{

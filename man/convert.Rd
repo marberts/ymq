@@ -16,11 +16,11 @@ q2m(x)
 }
 
 \arguments{
-  \item{x}{Integer vector of year months of the form YYYYMM, or year quarters of the form YYYYQQ.}
+  \item{x}{An integer vector of year months of the form YYYYMM, or year quarters of the form YYYYQQ.}
 }
 
 \value{
-An integer vector of the form YYYYMM, or YYYYQQ.
+For \code{q2m()}, an integer vector of the form YYYYMM; for \code{mq2()}, an integer vector of the form YYYYQQ.
 }
 
 \examples{
